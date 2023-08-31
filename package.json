@@ -2,7 +2,7 @@
   "name": "express-ts-auth-service",
   "version": "1.0.0",
   "description": "A ready-to-use authentication service build with express.js, that provides secure and reliable authentication using JSON Web Tokens (JWT) and refresh token rotation",
-  "author": "Louis-Kaan Ay",
+  "author": "Hari",
   "license": "MIT",
   "private": false,
   "main": "./dist/index.js",
@@ -78,14 +78,6 @@
     "ts-jest": "^29.0.5",
     "typescript": "5.0.2"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Louis3797/express-ts-auth-service"
-  },
-  "bugs": {
-    "url": "https://github.com/Louis3797/express-ts-auth-service/issues"
-  },
-  "homepage": "https://github.com/Louis3797/express-ts-auth-service",
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [
       "npx prettier --write",

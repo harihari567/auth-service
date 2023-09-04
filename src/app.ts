@@ -4,13 +4,18 @@ import helmet from 'helmet';
 import compression from 'compression';
 import cookieParser from 'cookie-parser';
 import compressFilter from './utils/compressFilter.util';
-import { authRouter, passwordRouter, verifyEmailRouter } from './routes/v1';
+import {
+  authRouter,
+  linkRouter,
+  passwordRouter,
+  verifyEmailRouter
+} from './routes/v1';
 import isAuth from './middleware/isAuth';
 import { errorHandler } from './middleware/errorHandler';
 import config from './config/config';
 import authLimiter from './middleware/authLimiter';
 import { xssMiddleware } from './middleware/xssMiddleware';
-import path from 'path';
+import * as linkController from './controller/link.controller';
 
 const app: Express = express();
 
@@ -48,13 +53,17 @@ app.use('/api/v1', passwordRouter);
 
 app.use('/api/v1', verifyEmailRouter);
 
+app.use('/api/v1', linkRouter);
+
 app.get('/secret', isAuth, (_req, res) => {
   res.json({
     message: 'You can see me'
   });
 });
 
-app.all('*', (req, res) => {
+app.get('/:key', linkController.handleGetLink);
+
+app.all('*', (_, res) => {
   res.status(404);
   res.json({ error: '404 Not Found' });
 });

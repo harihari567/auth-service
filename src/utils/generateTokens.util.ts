@@ -12,7 +12,7 @@ const { sign } = jwt;
  * @returns Returns a valid access token
  */
 export const createAccessToken = (userId: number | string): string => {
-  return sign({ userID: userId }, config.jwt.access_token.secret, {
+  return sign({ userId: userId }, config.jwt.access_token.secret, {
     expiresIn: config.jwt.access_token.expire
   });
 };
